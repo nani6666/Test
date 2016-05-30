@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7; IE=EmulateIE9">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="css/fdw-demo.css" media="all" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700' rel='stylesheet' type='text/css'>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Boostrap Validator</title>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>  
+  <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>  
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.min.css"/>
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"> </script>
+  </head>
+<body>
+	<div class="container">
+ <div class="menu-outer">
+    <div class="menu-icon">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <nav>
+        <ul>
+           <li><a href="viewDetails.html">View Details</a></li>
+           
+       </ul>
+   </nav>
+</div>
+<a class="menu-close" onClick="return true">
+    <div class="menu-icon">
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+</a>
+  		<header>
+				<h1><span>Assignment on</span><strong>Registration Form </strong></h1>
+            </header>       
+	     
+      <div  class="form">
+     <form id="contactForm" method="post" class="form-horizontal">
+	 
+    <div class="form-group">
+        <p class="contact"><label for="FirstName">FirstName:</label></p> 
+            <input type="text" class="form-control" name="firstName" />
+	</div>	
+    <div class="form-group">
+        <p class="contact"><label for="LastName">LastName:</label></p> 
+            <input type="text" class="form-control" name="lastName" />
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">Email</label>
+        
+            <input type="text" class="form-control" name="email" />
+        
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">Title</label>
+            <input type="text" class="form-control" name="title" />
+       
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">Content</label>
+        
+            <textarea class="form-control" name="content" rows="5"></textarea>
+   
+    </div>
+    <!-- #messages is where the messages are placed inside -->
+    <div class="form-group">
+        <div class="col-md-9 col-md-offset-3">
+            <div id="messages"></div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-9 col-md-offset-3">
+            <button type="submit" class="btn btn-default">Validate</button>
+        </div>
+    </div>
+</form>
+
+<script>
+$(document).ready(function() {
+    $('#contactForm').bootstrapValidator({
+        container: '#messages',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            firstName: {
+                validators: {
+                    notEmpty: {
+                        message: 'The  firstName is required and cannot be empty'
+                    }
+                }
+            },
+			
+			
+            email: {
+                validators: {
+                    notEmpty: {
+                        message: 'The email address is required and cannot be empty'
+                    },
+                    emailAddress: {
+                        message: 'The email address is not valid'
+                    }
+                }
+            },
+            title: {
+                validators: {
+                    notEmpty: {
+                        message: 'The title is required and cannot be empty'
+                    },
+                    stringLength: {
+                        max: 100,
+                        message: 'The title must be less than 100 characters long'
+                    }
+                }
+            },
+            content: {
+                validators: {
+                    notEmpty: {
+                        message: 'The content is required and cannot be empty'
+                    },
+                    stringLength: {
+                        max: 500,
+                        message: 'The content must be less than 500 characters long'
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
+</body>
+</html>
