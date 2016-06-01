@@ -7,171 +7,68 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
- <link rel="stylesheet" type="text/css" href="css/Details.css" media="all" />
+ <link rel="stylesheet" type="text/css" href="Details.css" media="all" />
       <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
       <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
       <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	  <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+	  <link href=" https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet">
+	 
 </head>
 
 <script>
-$(function() {
+$(document).ready(function() {
 $("#txtDate").datepicker({ dateFormat: 'yy-mm-dd' });
-});
+
+            $.ajax({
+                type: 'GET',
+                url: 'http://103.59.212.246:8080/registration/home/registration/getDetailsRest',
+                contentType: "application/json",
+                success: function(data) {
+                    dataSet = [];
+                    $.each(data, function(key, value) {
+                        dataSet.push([value.s_no, value.firstname, value.lastname,value.dateofbirth,value.email,value.maritalstatus,value.address              
+                        ]);
+                    });
+                    $('#regDetails').dataTable({
+                        "destroy": true,
+                        "data": dataSet
+                    });
+         
+}
+
+
+        });
+
+  });
+
+
+
 </script>
 
 <body>
-	<header >
-	<h1 style="color:#6d5868" align="center">View Details</h1>
+ <header >
+ <h1 style="color:#6d5868" align="center">View Details</h1>
             </header>
-	<div align="center" style="width: 100%; ">
-		
-<table>
+ <div align="center" style="width: 100%; ">
+  
+<table id="regDetails">
   <thead>
     <tr>
-      <th>id</th> 
+      <th>s_no</th> 
       <th>First Name</th>
       <th>Last Name</th>
-	  <th>Date of Birth</th>
-	  <th>Email</th>
-	  <th>Address</th>
-	  <th>Marital Status</th>
-	  <th>Edit</th>
-	  <th>Delete</th>
+   <th>Date of Birth</th>
+   <th>Email</th>
+   <th>Address</th>
+   <th>Marital Status</th>
+   
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td><strong>1</strong></td>
-      <td>Raviteja</td>
-      <td>M</td>
-	  <td>26-04-1994</td>
-	  <td>rteja@nextalytics.com</td>
-	  <td>Nellore</td>
-	  <td>Married</td>
-	  <td><button type="button" class="btn btn-info"><a href="#myModal" data-toggle="modal"> Edit</a></button></td>
-	  <td><button type="button" class="btn btn-primary">Delete</button></td>
-    </tr>
-	
-    <tr>
-      <td><strong>1</strong></td>
-      <td>Raviteja</td>
-      <td>M</td>
-	  <td>26-04-1994</td>
-	  <td>rteja@nextalytics.com</td>
-	  <td>Nellore</td>
-	  <td>Married</td>
-	  <td><button type="button" class="btn btn-info">Edit</button></td>
-	  <td><button type="button" class="btn btn-primary">Delete</button></td>
-    </tr>
-    <tr>
-      <td><strong>1</strong></td>
-      <td>Raviteja</td>
-      <td>M</td>
-	  <td>26-04-1994</td>
-	  <td>rteja@nextalytics.com</td>
-	  <td>Nellore</td>
-	  <td>Married</td>
-	  <td><button type="button" class="btn btn-info">Edit</button></td>
-	  <td><button type="button" class="btn btn-primary">Delete</button></td>
-    </tr>
-    <tr>
-      <td><strong>1</strong></td>
-      <td>Raviteja</td>
-      <td>M</td>
-	  <td>26-04-1994</td>
-	  <td>rteja@nextalytics.com</td>
-	  <td>Nellore</td>
-	  <td>Married</td>
-	  <td><button type="button" class="btn btn-info">Edit</button></td>
-	  <td><button type="button" class="btn btn-primary">Delete</button></td>
-    </tr>					
-    <tr>
-      <td><strong>1</strong></td>
-      <td>Raviteja</td>
-      <td>M</td>
-	  <td>26-04-1994</td>
-	  <td>rteja@nextalytics.com</td>
-	  <td>Nellore</td>
-	  <td>Married</td>
-	  <td><button type="button" class="btn btn-info">Edit</button></td>
-	  <td><button type="button" class="btn btn-primary">Delete</button></td>
-    </tr>
-    <tr>
-      <td><strong>1</strong></td>
-      <td>Raviteja</td>
-      <td>M</td>
-	  <td>26-04-1994</td>
-	  <td>rteja@nextalytics.com</td>
-	  <td>Nellore</td>
-	  <td>Married</td>
-	<td><button type="button" class="btn btn-info">Edit</button></td>
-	  <td><button type="button" class="btn btn-primary">Delete</button></td>
-    </tr>
-    <tr>
-      <td><strong>1</strong></td>
-      <td>Raviteja</td>
-      <td>M</td>
-	  <td>26-04-1994</td>
-	  <td>rteja@nextalytics.com</td>
-	  <td>Nellore</td>
-	  <td>Married</td>
-	<td><button type="button" class="btn btn-info">Edit</button></td>
-	  <td><button type="button" class="btn btn-primary">Delete</button></td>
-    </tr>
+    
   </tbody>
 </table>
 </div>
-<div class="bs-example">
-<div id="myModal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Edit Details</h4>
-                </div>
-                <div class="modal-body">
-				<div style="align:left">
-				<p><label for="name">First Name:</label></p> 
-    			<input size="46" id="Firstname" name="firstname" placeholder="First name" required="" tabindex="1" type="text"> 
-				</div>
-				<br>
-				<div>
-				<p><label for="LastName">Last Name:</label></p>
-    			<input size="46" id="LastName" name="lastname" placeholder="Last name" required="" tabindex="1" type="text">
-				</div>
-				<br>
-				<div>
-				<p><label for="DateofBirth">Date of Birth:</label></p>
-	            <input size="46" type="text" id="txtDate" name="DateofBirth" required="" >
-    			<br>
-				</div>
-				<br>
-				<div>
-				<p><label for="email">Email:</label></p>
-    			<input size="46" id="email" name="email" placeholder="example@domain.com" required="" type="email"> 
-                </div>
-				
-				<div>
-                <p class="contact"><label for="Address">Address:</label></p> 
-               <textarea cols="46" rows="5" name="address" id="message" required="" tabindex="1" type="text"></textarea>
-				</div>
-	
-   <div class="styled-select">
-   <label for="name"  style="text:bold">Martial Status:</label>
-   <select  required name="maritalstatus">
-     <option value="">Select</option>
-      <option value="Married">Married</option>
-      <option value="Unmarried">Unmarried</option>
-	  </select>
-   </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> 
 </body>
 </html>
